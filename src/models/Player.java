@@ -5,57 +5,69 @@ import java.util.HashMap;
 
 public class Player
 {
-	HashMap<String, Property> properties =  new HashMap<>();
+	HashMap<String, Property> properties = new HashMap<>();
 	ArrayList<SpecialCard> lootBoxCards = new ArrayList<>();
 	String name;
 	int amountOfCash;
 	boolean inJail;
-	
-	public Player(String name) {
+
+	public Player(String name)
+	{
 		setName(name);
 	}
 
-	public HashMap<String, Property> getProperties() {
+	public HashMap<String, Property> getProperties()
+	{
 		return properties;
 	}
 
-	public void setProperties(Property) {
-//		this.properties = properties;
+	public void setProperties(Property property)
+	{
+		// this.properties = properties;
 	}
 
-	public ArrayList<SpecialCard> getLootBoxCards() {
+	public ArrayList<SpecialCard> getLootBoxCards()
+	{
 		return lootBoxCards;
 	}
 
-	public void setLootBoxCards(ArrayList<SpecialCard> lootBoxCards) {
+	public void setLootBoxCards(ArrayList<SpecialCard> lootBoxCards)
+	{
 		this.lootBoxCards = lootBoxCards;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public int getAmountOfCash() {
+	public int getAmountOfCash()
+	{
 		return amountOfCash;
 	}
 
-	public void setAmountOfCash(int amountOfCash) {
+	public void setAmountOfCash(int amountOfCash)
+	{
 		this.amountOfCash = amountOfCash;
 	}
 
-	public boolean isInJail() {
+	public boolean isInJail()
+	{
 		return inJail;
 	}
 
-	public void setInJail(boolean inJail) {
+	public void setInJail(boolean inJail)
+	{
 		this.inJail = inJail;
 	}
-	
-	public void useGetOutOfJail(){
-		
+
+	public void useGetOutOfJail()
+	{
+
 	}
 }
