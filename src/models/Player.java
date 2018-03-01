@@ -10,6 +10,8 @@ public class Player
 	String name;
 	int amountOfCash;
 	boolean inJail;
+	int x;
+	int y;
 	
 	public Player(String name) {
 		setName(name);
@@ -53,6 +55,22 @@ public class Player
 
 	public void setInJail(boolean inJail) {
 		this.inJail = inJail;
+	}
+	
+	public int getX() {
+		return this.x;
+	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
 	}
 	
 	public void useGetOutOfJail(){
