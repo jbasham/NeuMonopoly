@@ -2,7 +2,7 @@ package models;
 
 public class NormalProp extends Property
 {
-	int numOfHouses, housePrice, houseAdditionalRent;
+	int numOfHouses = 0, housePrice, houseAdditionalRent;
 	
 	public NormalProp(String name, String color, int costToPurchase, int costOfRent, int mortgage, int housePrice, int additionalRent) {
 		
