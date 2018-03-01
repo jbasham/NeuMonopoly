@@ -1,6 +1,12 @@
 package models;
 
-public class SpecialSpace
+public class SpecialSpace extends Space
 {
+
+	@Override
+	public void receiveMessage() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
