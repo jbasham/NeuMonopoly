@@ -2,12 +2,11 @@ package models;
 
 public class Game
 {
-	public Board board;
-	public Player[] players;
-	private SpecialCard[] specialCards;
-
-	public Game(int numberOfPlayers)
-	{
-		
+	Board board = new Board();
+	Player[] players;
+	SpecialCard[] specialCards = new SpecialCard[];
+	
+	public Game (int numberOfPlayers) {
+		players = new Player[numberOfPlayers];
 	}
 }

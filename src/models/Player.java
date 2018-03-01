@@ -21,9 +21,8 @@ public class Player
 		return properties;
 	}
 
-	public void setProperties(Property property)
-	{
-		// this.properties = properties;
+	public void setProperties(Property property) {
+		properties.put(property.getName(), property);
 	}
 
 	public ArrayList<SpecialCard> getLootBoxCards()
