@@ -23,7 +23,7 @@ public class GameManager
 	{
 
 	}
-
+ 
 	public static int updateFunds()
 	{
 		return 0;
