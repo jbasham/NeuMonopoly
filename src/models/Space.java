@@ -4,7 +4,7 @@ public abstract class Space
 {
 	private String name;
 
-	public abstract void recieveMessage();
+	public abstract void receiveMessage();
 
 	public String getName()
 	{

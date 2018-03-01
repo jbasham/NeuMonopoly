@@ -16,10 +16,12 @@ public class Railroad extends Property
 		return getCostOfRent();
 	}
 
-	@Override
-	public void recieveMessage()
-	{
 
+	@Override
+	public void receiveMessage()
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }
