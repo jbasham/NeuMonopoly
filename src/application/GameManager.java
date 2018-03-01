@@ -11,12 +11,12 @@ public class GameManager
 
 	public static void instructions()
 	{
-
+		
 	}
 
 	public static void load()
 	{
-
+		//confjgjhfg
 	}
 
 	public static void rollDice()
