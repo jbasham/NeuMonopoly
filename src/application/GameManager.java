@@ -11,7 +11,7 @@ public class GameManager
 
 	public static void instructions()
 	{
-
+		//uhhh documention
 	}
 
 	public static void load()
