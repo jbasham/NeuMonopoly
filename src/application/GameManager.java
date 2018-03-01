@@ -19,23 +19,23 @@ public class GameManager
 
 	}
 
-	public static void roolDice()
+	public static void rollDice()
 	{
 
 	}
  
-	public static int updateFunds()
+	public static int updateFunds(Player player)
 	{
 		return 0;
 
 	}
 
-	public static void giveProperties()
+	public static void giveProperties(Player player)
 	{
 
 	}
 
-	public static void giveCards()
+	public static void giveCards(Player player)
 	{
 
 	}
@@ -50,7 +50,7 @@ public class GameManager
 
 	}
 
-	public static void gotToJail(Player player)
+	public static void goToJail(Player player)
 	{
 
 	}
