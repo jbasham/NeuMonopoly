@@ -10,9 +10,10 @@ public class Player
 	String name;
 	int amountOfCash;
 	boolean inJail;
-
-	public Player(String name)
-	{
+	int x;
+	int y;
+	
+	public Player(String name) {
 		setName(name);
 	}
 
@@ -64,9 +65,24 @@ public class Player
 	{
 		this.inJail = inJail;
 	}
-
-	public void useGetOutOfJail()
-	{
-
+	
+	public int getX() {
+		return this.x;
+	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public void useGetOutOfJail(){
+		
 	}
 }
