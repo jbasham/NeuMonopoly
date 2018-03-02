@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Player
 {
 	HashMap<String, Property> properties = new HashMap<>();
-	ArrayList<SpecialCard> lootBoxCards = new ArrayList<>();
+	ArrayList<SpecialCard> specialCards = new ArrayList<>();
 	String name;
 	int amountOfCash;
 	boolean inJail;
@@ -25,14 +25,14 @@ public class Player
 		properties.put(property.getName(), property);
 	}
 
-	public ArrayList<SpecialCard> getLootBoxCards()
+	public ArrayList<SpecialCard> getSpecialCards()
 	{
-		return lootBoxCards;
+		return specialCards;
 	}
 
-	public void setLootBoxCards(ArrayList<SpecialCard> lootBoxCards)
+	public void setSpecialCards(SpecialCard card)
 	{
-		this.lootBoxCards = lootBoxCards;
+		specialCards.add(card);
 	}
 
 	public String getName()

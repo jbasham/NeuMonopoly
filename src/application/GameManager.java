@@ -1,9 +1,15 @@
 package application;
 
+import java.util.Random;
+
 import models.Player;
+import models.Property;
+import models.SpecialCard;
 
 public class GameManager
 {
+	public static int freeParkingSpaceMoney;
+	
 	public static void newGame()
 	{
 
@@ -11,37 +17,48 @@ public class GameManager
 
 	public static void instructions()
 	{
-		//uhhh documention
+		// uhhh documention
 	}
 
 	public static void load()
 	{
-		//confjgjhfg
+		// confjgjhfg
 	}
 
-	public static void rollDice()
+	public static int[] rollDice()
 	{
+		//Creates two dice and gets a random number 1-6 and returns the array.
+		Random rng = new Random();
+		int[] dice = new int[2];
+		dice[0] = rng.nextInt(5) + 1;
+		dice[1] = rng.nextInt(5) + 1;
 
-	}
- 
-	public static int updateFunds(Player player)
-	{
-		return 0;
-
-	}
-
-	public static void giveProperties(Player player)
-	{
-
+		return dice;
 	}
 
-	public static void giveCards(Player player)
+	public static void updateFunds(Player player, int money)
 	{
-
+		//Set the cash amount to the current plus money passed in.
+		player.setAmountOfCash(player.getAmountOfCash() + money);
 	}
 
-	public static int addFreeParkingMoney()
+	public static void giveProperties(Player player, Property prop)
 	{
+		//add prop to the players prop collection
+		player.setProperties(prop);
+	}
+
+	public static void giveCards(Player player, SpecialCard card)
+	{
+		//adds the card to the players collection.
+		player.setSpecialCards(card);
+	}
+
+	public static int addFreeParkingMoney(int money)
+	{ 
+		//Adds the money to parking space.
+		freeParkingSpaceMoney += money;
+		//not sure if we need a return.
 		return 0;
 	}
 
@@ -55,15 +72,17 @@ public class GameManager
 
 	}
 
-	public static int giveFreeParkingGiveMoney(Player player)
+	public static void giveFreeParkingGiveMoney(Player player)
 	{
-
-		return 0;
+		//Set the cash amount to the current plus the Free parking.
+		player.setAmountOfCash(player.getAmountOfCash() + freeParkingSpaceMoney);
+		//Set the free parking to 0.
+		freeParkingSpaceMoney = 0;
 	}
 
 	public static void drawCard()
 	{
-
+		
 	}
 
 	public static void chargeRent()
