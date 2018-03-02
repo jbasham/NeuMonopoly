@@ -2,15 +2,16 @@ package models;
 
 public class NormalProp extends Property
 {
+	private final String color;
 	private int numOfHouses;
 	private int housePrice;
 	private int houseAdditionalRent;
 
-	public NormalProp(String name, String color, int costToPurchase, int costOfRent, int mortgage, int housePrice,
+	public NormalProp(String name, int xCoordinate, int yCoordinate, String color, int costToPurchase, int costOfRent, int mortgage, int housePrice,
 			int houseAdditionalRent)
 	{
-		setName(name);
-		setColor(color);
+		super(name, xCoordinate, yCoordinate);
+		this.color = color;
 		setCostToPurchase(costToPurchase);
 		setCostOfRent(costOfRent);
 		setMortgageValue(mortgage);
@@ -48,6 +49,10 @@ public class NormalProp extends Property
 		this.houseAdditionalRent = houseAdditionalRent;
 	}
 
+	public String getColor() {
+		return color;
+	}
+	
 	@Override
 	public int getRent()
 	{
@@ -61,4 +66,5 @@ public class NormalProp extends Property
 		// TODO Auto-generated method stub
 		
 	}
+
 }

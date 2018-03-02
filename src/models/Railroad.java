@@ -3,9 +3,9 @@ package models;
 public class Railroad extends Property
 {
 
-	public Railroad(String name, int costToPurchase, int mortgage)
+	public Railroad(String name, int xCoordinate, int yCoordinate, int costToPurchase, int mortgage)
 	{
-		setName(name);
+		super(name, xCoordinate, yCoordinate);
 		setCostToPurchase(costToPurchase);
 		setMortgageValue(mortgage);
 	}
