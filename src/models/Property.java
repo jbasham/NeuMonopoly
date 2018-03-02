@@ -2,20 +2,14 @@ package models;
 
 public abstract class Property extends Space
 {
-	private String color;
+	
 	private int costToPurchase;
 	private int costOfRent;
 	private int mortgageValue;
 	private boolean isMortgaged;
-
-	public String getColor()
-	{
-		return color;
-	}
-
-	public void setColor(String color)
-	{
-		this.color = color;
+	
+	public Property(String name, int xCoordinate, int yCoordinate) {
+		super(name, xCoordinate, yCoordinate);
 	}
 
 	public int getCostToPurchase()
