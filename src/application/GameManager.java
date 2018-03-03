@@ -8,7 +8,6 @@ import java.util.Random;
 
 import models.Game;
 import models.Player;
-import models.PogoStick;
 import models.Property;
 import models.SpecialCard;
 
@@ -16,9 +15,10 @@ public class GameManager
 {
 	public static int freeParkingSpaceMoney;
 	
-	public static void newGame()
+	public static Game newGame(int numOfPlayers)
 	{
-
+		Game game = new Game(numOfPlayers);
+		return game;
 	}
 
 	public static void instructions()
