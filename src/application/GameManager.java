@@ -4,7 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URI;
 import java.util.Random;
+
+import javax.swing.JFrame;
 
 import models.Game;
 import models.Player;
@@ -23,7 +26,12 @@ public class GameManager
 
 	public static void instructions()
 	{
-		// uhhh documention
+		//opens a webpage with the instructions. ezpz
+		try {
+			java.awt.Desktop.getDesktop().browse(new URI("http://richard_wilding.tripod.com/monorules.htm"));
+		} catch (Exception e) {
+			System.out.println("Could not open the instructions");
+		}
 	}
 
 	public static void save(Game g) {
