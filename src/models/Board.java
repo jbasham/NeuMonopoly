@@ -1,7 +1,13 @@
 package models;
 
-public class Board
+import java.io.Serializable;
+
+public class Board implements Serializable
 {
- public Space[] spaces = new Space[40];
+ /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+public Space[] spaces = new Space[40];
  
 }

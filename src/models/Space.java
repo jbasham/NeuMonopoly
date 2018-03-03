@@ -1,7 +1,13 @@
 package models;
 
-public abstract class Space
+import java.io.Serializable;
+
+public abstract class Space implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String name;
 	private final int xCoordinate, yCoordinate;
 	
