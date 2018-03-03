@@ -1,8 +1,14 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 
+import models.Game;
 import models.Player;
+import models.PogoStick;
 import models.Property;
 import models.SpecialCard;
 
@@ -20,9 +26,35 @@ public class GameManager
 		// uhhh documention
 	}
 
-	public static void load()
+	public static void save(Game g) {
+		//saves the current game to a file
+		//MUST PASS IN THE CURRENT GAME
+		try {
+			FileOutputStream fout = new FileOutputStream("SavedGame.txt");
+			ObjectOutputStream out = new ObjectOutputStream(fout);
+			
+			out.writeObject(g);
+			out.close();
+		} catch (Exception e) {
+			System.out.println("Could not save to file");
+		}
+	}
+	
+	public static Game load()
 	{
-		// confjgjhfg
+		//loads a game from a file
+		//RETURNS A GAME OBJECT THAT WE SHOULD USE INSTEAD OF MAKING A NEW ONE WITH newGame()
+		try {
+			FileInputStream fin = new FileInputStream("SavedGame.txt");
+			ObjectInputStream oin = new ObjectInputStream(fin);
+			
+			Game g = (Game)oin.readObject();
+			oin.close();
+			return g;
+		} catch (Exception e) {
+			System.out.println("No saved game found");
+		}
+		return null;
 	}
 
 	public static int[] rollDice()

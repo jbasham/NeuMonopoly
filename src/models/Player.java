@@ -1,10 +1,15 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Player
+public class Player implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	HashMap<String, Property> properties = new HashMap<>();
 	ArrayList<SpecialCard> specialCards = new ArrayList<>();
 	String name;
