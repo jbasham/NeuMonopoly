@@ -7,8 +7,7 @@ public class NormalProp extends Property
 	private int housePrice;
 	private int houseAdditionalRent;
 
-	public NormalProp(String name, int xCoordinate, int yCoordinate, String color, int costToPurchase, int costOfRent, int mortgage, int housePrice,
-			int houseAdditionalRent)
+	public NormalProp(String name, int xCoordinate, int yCoordinate, String color, int costToPurchase, int costOfRent, int mortgage, int housePrice)
 	{
 		super(name, xCoordinate, yCoordinate);
 		this.color = color;
@@ -16,7 +15,7 @@ public class NormalProp extends Property
 		setCostOfRent(costOfRent);
 		setMortgageValue(mortgage);
 		setHousePrice(housePrice);
-		setHouseAdditionalRent(houseAdditionalRent);
+		
 	}
 
 	public int getNumOfHouses()

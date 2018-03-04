@@ -13,9 +13,9 @@ public class Player implements Serializable
 	HashMap<String, Property> properties = new HashMap<>();
 	ArrayList<SpecialCard> specialCards = new ArrayList<>();
 	String name;
-	int amountOfCash;
+	int amountOfCash, jailTurns;
 	boolean inJail;
-	//position x/y
+	int[] coordinates;
 	
 	public Player(String name) {
 		setName(name);
@@ -73,4 +73,21 @@ public class Player implements Serializable
 	public void useGetOutOfJail(){
 		
 	}
+
+	public int[] getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(int[] coordinates) {
+		this.coordinates = coordinates;
+	}
+
+	public int getJailTurns() {
+		return jailTurns;
+	}
+
+	public void setJailTurns(int jailTurns) {
+		this.jailTurns = jailTurns;
+	}
+	
 }
