@@ -8,8 +8,9 @@ public class Board implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-public Space[] spaces = new Space[40];
- 
+public Space[] spaces = {
+		
+		//formats the board (hard-coded values and positions)
 		 new SpecialSpace("Start", 10, 10),
 		 new NormalProp("Java", 9, 10, "brown", 60, 2, 30, 50),
 		 new SpecialSpace("LootBox", 8, 10),
