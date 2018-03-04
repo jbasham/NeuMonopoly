@@ -7,8 +7,6 @@ import java.io.ObjectOutputStream;
 import java.net.URI;
 import java.util.Random;
 
-import javax.swing.JFrame;
-
 import models.Game;
 import models.Player;
 import models.Property;
@@ -104,7 +102,25 @@ public class GameManager
 
 	public static void jail(Player player)
 	{
-
+		int[] escapeAttempt;
+		escapeAttempt = rollDice();
+		boolean payBail;
+		
+		if (payBail) {
+			player.setAmountOfCash(player.getAmountOfCash() - 50);
+			player.setInJail(false);
+		}
+		
+		if (escapeAttempt[0] == escapeAttempt[1]) {
+			player.setInJail(false);
+		} else {
+			player.setJailTurns(player.getJailTurns() + 1);
+		}
+		
+		if (player.getJailTurns() > 1) {
+			player.setAmountOfCash(player.getAmountOfCash() - 50);
+			player.setInJail(false);
+		}
 	}
 
 	public static void goToJail(Player player)
