@@ -53,16 +53,5 @@ public abstract class Property extends Space
 		this.isMortgaged = isMortgaged;
 	}
 
-	public int getRent()
-	{
-		if(isMortgaged())
-		{
-			return getCostOfRent();
-		}
-		else
-		{
-			return 0;
-		}
-
-	}
+	public abstract int getRent();
 }
