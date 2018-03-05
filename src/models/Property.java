@@ -2,13 +2,14 @@ package models;
 
 public abstract class Property extends Space
 {
-	
+
 	private int costToPurchase;
 	private int costOfRent;
 	private int mortgageValue;
 	private boolean isMortgaged;
-	
-	public Property(String name, int xCoordinate, int yCoordinate) {
+
+	public Property(String name, int xCoordinate, int yCoordinate)
+	{
 		super(name, xCoordinate, yCoordinate);
 	}
 
@@ -54,7 +55,14 @@ public abstract class Property extends Space
 
 	public int getRent()
 	{
-		return getCostOfRent();
+		if(isMortgaged())
+		{
+			return getCostOfRent();
+		}
+		else
+		{
+			return 0;
+		}
 
 	}
 }

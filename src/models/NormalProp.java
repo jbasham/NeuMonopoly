@@ -7,7 +7,8 @@ public class NormalProp extends Property
 	private int housePrice;
 	private int houseAdditionalRent;
 
-	public NormalProp(String name, int xCoordinate, int yCoordinate, String color, int costToPurchase, int costOfRent, int mortgage, int housePrice)
+	public NormalProp(String name, int xCoordinate, int yCoordinate, String color, int costToPurchase, int costOfRent,
+			int mortgage, int housePrice)
 	{
 		super(name, xCoordinate, yCoordinate);
 		this.color = color;
@@ -15,7 +16,7 @@ public class NormalProp extends Property
 		setCostOfRent(costOfRent);
 		setMortgageValue(mortgage);
 		setHousePrice(housePrice);
-		
+
 	}
 
 	public int getNumOfHouses()
@@ -48,22 +49,22 @@ public class NormalProp extends Property
 		this.houseAdditionalRent = houseAdditionalRent;
 	}
 
-	public String getColor() {
+	public String getColor()
+	{
 		return color;
 	}
-	
+
 	@Override
 	public int getRent()
 	{
 		return getCostOfRent();
 	}
 
-
 	@Override
 	public void receiveMessage()
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

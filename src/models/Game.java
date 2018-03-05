@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Game implements Serializable
 {
@@ -10,11 +11,27 @@ public class Game implements Serializable
 	private static final long serialVersionUID = 1L;
 	Board board = new Board();
 	Player[] players;
-	SpecialCard[] specialCards = new SpecialCard[10];
+	static SpecialCard[] specialCards = new SpecialCard[10];
 
 	public Game(int numberOfPlayers)
 	{
 		players = new Player[numberOfPlayers];
+	}
+
+	public static SpecialCard drawCard(Player player)
+	{
+		if(player.getCoordinates()[0] == 10 && player.getCoordinates()[1] == 2)
+		{
+
+			Random rng = new Random();
+			return specialCards[rng.nextInt(5)];
+		}
+		else
+		{
+			Random rng = new Random();
+			return specialCards[rng.nextInt(5) + 5];
+		}
+
 	}
 
 	public void createCards()

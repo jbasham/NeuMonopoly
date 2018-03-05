@@ -11,13 +11,16 @@ public class Player implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	HashMap<String, Property> properties = new HashMap<>();
+	// added a normal properties so i can get the colors.
+	HashMap<String, NormalProp> normalProps = new HashMap<>();
 	ArrayList<SpecialCard> specialCards = new ArrayList<>();
 	String name;
 	int amountOfCash, jailTurns;
 	boolean inJail;
 	int[] coordinates;
-	
-	public Player(String name) {
+
+	public Player(String name)
+	{
 		setName(name);
 	}
 
@@ -26,8 +29,19 @@ public class Player implements Serializable
 		return properties;
 	}
 
-	public void setProperties(Property property) {
+	public void setProperties(Property property)
+	{
 		properties.put(property.getName(), property);
+	}
+
+	public HashMap<String, NormalProp> getNormalProps()
+	{
+		return normalProps;
+	}
+
+	public void setNormalProps(NormalProp property)
+	{
+		normalProps.put(property.getName(), property);
 	}
 
 	public ArrayList<SpecialCard> getSpecialCards()
@@ -68,26 +82,35 @@ public class Player implements Serializable
 	public void setInJail(boolean inJail)
 	{
 		this.inJail = inJail;
-	}
-	
-	public void useGetOutOfJail(){
-		
+		if(inJail)
+		{
+			setJailTurns(0);
+		}
 	}
 
-	public int[] getCoordinates() {
+	public void useGetOutOfJail()
+	{
+
+	}
+
+	public int[] getCoordinates()
+	{
 		return coordinates;
 	}
 
-	public void setCoordinates(int[] coordinates) {
+	public void setCoordinates(int[] coordinates)
+	{
 		this.coordinates = coordinates;
 	}
 
-	public int getJailTurns() {
+	public int getJailTurns()
+	{
 		return jailTurns;
 	}
 
-	public void setJailTurns(int jailTurns) {
+	public void setJailTurns(int jailTurns)
+	{
 		this.jailTurns = jailTurns;
 	}
-	
+
 }
