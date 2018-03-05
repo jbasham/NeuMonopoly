@@ -18,6 +18,11 @@ public class Game implements Serializable
 		players = new Player[numberOfPlayers];
 	}
 
+	public Player[] getPlayer()
+	{
+		return players;
+	}
+
 	public static SpecialCard drawCard(Property prop)
 	{
 		if(prop.getName().equals("Chance"))
