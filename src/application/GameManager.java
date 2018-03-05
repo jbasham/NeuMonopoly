@@ -39,16 +39,15 @@ public class GameManager
 		}
 	}
 
-	public static void save(Game g)
+	public static void save()
 	{
 		// saves the current game to a file
-		// MUST PASS IN THE CURRENT GAME
 		try
 		{
 			FileOutputStream fout = new FileOutputStream("SavedGame.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fout);
 
-			out.writeObject(g);
+			out.writeObject(game);
 			out.close();
 		}
 		catch(Exception e)
@@ -100,9 +99,21 @@ public class GameManager
 		player.setProperties(prop);
 	}
 
-	public static void giveNormalProp(Player player, NormalProp prop)
-	{
-		player.setNormalProps(prop);
+	public static void buyProperty(Player player, Property prop) {
+		//this should be what is called when a player lands on a buyable property
+		for (int i = 0; i < game.getPlayers().length; i++) {
+			if (game.getPlayers()[i].getProperties().containsValue(prop)) {
+				break;
+			}
+			if (i == game.getPlayers().length - 1) {
+				boolean willBuy = false;
+				//asks the player if they want to buy the property
+				if (willBuy) {
+					player.setAmountOfCash(player.getAmountOfCash() - prop.getCostToPurchase());
+					giveProperties(player, prop);
+				}
+			}
+		}
 	}
 
 	public static void giveCards(Player player, SpecialCard card)
@@ -125,6 +136,7 @@ public class GameManager
 		escapeAttempt = rollDice();
 		// Temp so no error
 		boolean payBail = false;
+		// asks the user if they want to pay $50 bail
 		
 		if (!player.getSpecialCards().isEmpty()) {
 			boolean getOutOfJail = false;
