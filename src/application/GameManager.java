@@ -16,11 +16,13 @@ import models.SpecialCard;
 public class GameManager
 {
 	public static int freeParkingSpaceMoney;
+	
+	public static Game game;
 
-	public static Game newGame(int numOfPlayers)
+	public static void newGame(int numOfPlayers)
 	{
-		Game game = new Game(numOfPlayers);
-		return game;
+		Game newGame = new Game(numOfPlayers);
+		game = newGame;
 	}
 
 	public static void instructions()
@@ -54,7 +56,7 @@ public class GameManager
 		}
 	}
 
-	public static Game load()
+	public static void load()
 	{
 		// loads a game from a file
 		// RETURNS A GAME OBJECT THAT WE SHOULD USE INSTEAD OF MAKING A NEW ONE WITH
@@ -66,13 +68,12 @@ public class GameManager
 
 			Game g = (Game) oin.readObject();
 			oin.close();
-			return g;
+			game = g;
 		}
 		catch(Exception e)
 		{
 			System.out.println("No saved game found");
 		}
-		return null;
 	}
 
 	public static int[] rollDice()
@@ -204,6 +205,13 @@ public class GameManager
 
 	public static void chargeRent(Player player, Property prop)
 	{
-		player.setAmountOfCash(player.getAmountOfCash() - prop.getCostOfRent());
+		for (int i = 0; i < game.getPlayers().length; i++) {
+			if (game.getPlayers()[i].getProperties().containsValue(prop)) {
+				if (!game.getPlayers()[i].getProperties().get(prop.getName()).isMortgaged()) {
+					game.getPlayers()[i].setAmountOfCash(game.getPlayers()[i].getAmountOfCash() + prop.getRent());
+					player.setAmountOfCash(player.getAmountOfCash() - prop.getRent());
+				}
+			}
+		}
 	}
 }
