@@ -10,10 +10,35 @@ public class Railroad extends Property
 		setMortgageValue(mortgage);
 	}
 
-	@Override
-	public int getRent()
+	public int getRent(Player player)
 	{
-		return getCostOfRent();
+		int amountOfRailsOwned = 0;
+		int rent = 0;
+		
+		//check player hashmap for multiple, available railroads and increments counter
+		for(Property prop : player.properties.values()) {
+			if(prop instanceof Railroad && !prop.isMortgaged()) {
+				amountOfRailsOwned++;
+			}
+		}
+		
+		//sets rent based on the amount of available railroads
+		switch(amountOfRailsOwned) {
+		case 1:
+			rent = 25;
+			break;
+		case 2:
+			rent = 50;
+			break;
+		case 3:
+			rent = 100;
+			break;
+		case 4:
+			rent = 200;
+			break;
+		}
+		
+		return rent;
 	}
 
 	@Override
