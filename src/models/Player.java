@@ -88,11 +88,6 @@ public class Player implements Serializable
 		}
 	}
 
-	public void useGetOutOfJail()
-	{
-
-	}
-
 	public int[] getCoordinates()
 	{
 		return coordinates;
