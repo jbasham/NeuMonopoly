@@ -123,6 +123,15 @@ public class GameManager
 		escapeAttempt = rollDice();
 		// Temp so no error
 		boolean payBail = false;
+		
+		if (!player.getSpecialCards().isEmpty()) {
+			boolean getOutOfJail = false;
+			// asks the user if they want to use their get out of jail free card
+			if (getOutOfJail) {
+				player.getSpecialCards().remove(0);
+				player.setInJail(false);
+			}
+		} else {
 
 		if(payBail)
 		{
@@ -143,6 +152,7 @@ public class GameManager
 		{
 			player.setAmountOfCash(player.getAmountOfCash() - 50);
 			player.setInJail(false);
+		}
 		}
 	}
 
