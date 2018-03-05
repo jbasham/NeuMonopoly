@@ -18,13 +18,9 @@ public class Game implements Serializable
 		players = new Player[numberOfPlayers];
 	}
 
-	public Player[] getPlayers() {
-		return players;
-	}
-	
-	public static SpecialCard drawCard(Player player)
+	public static SpecialCard drawCard(Property prop)
 	{
-		if(player.getCoordinates()[0] == 10 && player.getCoordinates()[1] == 2)
+		if(prop.getName().equals("Chance"))
 		{
 
 			Random rng = new Random();

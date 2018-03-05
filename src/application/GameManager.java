@@ -11,6 +11,7 @@ import models.Game;
 import models.NormalProp;
 import models.Player;
 import models.Property;
+import models.Space;
 import models.SpecialCard;
 
 public class GameManager
@@ -173,9 +174,11 @@ public class GameManager
 		freeParkingSpaceMoney = 0;
 	}
 
-	public static void drawCard(Player player)
+	public static void drawCard(Player player, Property prop)
 	{
-		Game.drawCard(player);
+		// stores The card as a special card and adds it to the players card list
+		SpecialCard card = Game.drawCard(prop);
+		player.setSpecialCards(card);
 	}
 
 	public static void buyHouse(Player player, NormalProp prop)
