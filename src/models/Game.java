@@ -23,9 +23,9 @@ public class Game implements Serializable
 		return players;
 	}
 
-	public static SpecialCard drawCard(Property prop)
+	public static SpecialCard drawCard(SpecialSpace sp)
 	{
-		if(prop.getName().equals("Chance"))
+		if(sp.getName().equals("Chance"))
 		{
 
 			Random rng = new Random();
