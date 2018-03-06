@@ -104,6 +104,7 @@ public class GameManager
 		//this should be what is called when a player lands on a buyable property
 		for (int i = 0; i < game.getPlayers().length; i++) {
 			if (game.getPlayers()[i].getProperties().containsValue(prop)) {
+				chargeRent(player, prop);
 				break;
 			}
 			if (i == game.getPlayers().length - 1) {
