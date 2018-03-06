@@ -222,7 +222,7 @@ public class GameManager
 				player.setAmountOfCash(player.getAmountOfCash() - prop.getHousePrice());
 			}
 		}
-
+ 
 	}
 
 	public static boolean checkIfHousesAreEven(ArrayList<NormalProp> props, NormalProp prop)
