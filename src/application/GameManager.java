@@ -161,37 +161,26 @@ public class GameManager {
 		// asks the user if they want to pay $50 bail
 
 		if (!player.getSpecialCards().isEmpty()) {
-
-		if(!player.getSpecialCards().isEmpty())
-		{
 			boolean getOutOfJail = false;
 			// asks the user if they want to use their get out of jail free card
-			if(getOutOfJail)
-			{
+			if (getOutOfJail) {
 				player.getSpecialCards().remove(0);
 				player.setInJail(false);
 			}
-		}
-		else
-		{
+		} else {
 
-			if(payBail)
-			{
+			if (payBail) {
 				player.setAmountOfCash(player.getAmountOfCash() - 50);
 				player.setInJail(false);
 			}
 
-			if(escapeAttempt[0] == escapeAttempt[1])
-			{
+			if (escapeAttempt[0] == escapeAttempt[1]) {
 				player.setInJail(false);
-			}
-			else
-			{
+			} else {
 				player.setJailTurns(player.getJailTurns() + 1);
 			}
 
-			if(player.getJailTurns() > 1)
-			{
+			if (player.getJailTurns() > 1) {
 				player.setAmountOfCash(player.getAmountOfCash() - 50);
 				player.setInJail(false);
 			}
@@ -218,27 +207,21 @@ public class GameManager {
 		useCards(player, card);
 	}
 
-	public static void buyHouse(Player player, NormalProp prop)
-	{
+	public static void buyHouse(Player player, NormalProp prop) {
 		boolean ownsAllColors = false;
 		int numberOfProps = 0;
 		String propColor = prop.getColor();
 		ArrayList<NormalProp> ownedProps = getPropsByColor(player, propColor);
 
-		if(ownedProps.size() == 2 && (propColor.equals("blue") || propColor.equals("brown")))
-		{
+		if (ownedProps.size() == 2 && (propColor.equals("blue") || propColor.equals("brown"))) {
 			ownsAllColors = true;
-		}
-		else if(ownedProps.size() == 3 && (!propColor.equals("blue") && !propColor.equals("brown")))
-		{
+		} else if (ownedProps.size() == 3 && (!propColor.equals("blue") && !propColor.equals("brown"))) {
 			ownsAllColors = true;
 		}
 
 		// Check if they have even number of houses on each prop.
-		if(ownsAllColors)
-		{
-			if(checkIfHousesAreEven(ownedProps, prop))
-			{
+		if (ownsAllColors) {
+			if (checkIfHousesAreEven(ownedProps, prop)) {
 				prop.setNumOfHouses(prop.getNumOfHouses() + 1);
 				player.setAmountOfCash(player.getAmountOfCash() - prop.getHousePrice());
 			}
@@ -246,41 +229,31 @@ public class GameManager {
 
 	}
 
-	public static boolean checkIfHousesAreEven(ArrayList<NormalProp> props, NormalProp prop)
-	{
+	public static boolean checkIfHousesAreEven(ArrayList<NormalProp> props, NormalProp prop) {
 
 		int p1HouseCount = 0;
 		int p2HouseCount = 0;
 		int counter = 0;
 		// Adds the other props houses to the int values
-		for(NormalProp ownedProp : props)
-		{
-			if(ownedProp != prop && counter == 0)
-			{
+		for (NormalProp ownedProp : props) {
+			if (ownedProp != prop && counter == 0) {
 				p1HouseCount = ownedProp.getNumOfHouses();
-			}
-			else if(ownedProp != prop && counter == 1)
-			{
+			} else if (ownedProp != prop && counter == 1) {
 				p2HouseCount = ownedProp.getNumOfHouses();
 			}
 			counter++;
 		}
 		// checks if they can buy
-		if(props.size() == 2)
-		{
-			if(p1HouseCount == (prop.getNumOfHouses() + 1) || p1HouseCount == prop.getNumOfHouses())
-			{
+		if (props.size() == 2) {
+			if (p1HouseCount == (prop.getNumOfHouses() + 1) || p1HouseCount == prop.getNumOfHouses()) {
 				return true;
-			}
-			else
-			{
-				//if the have three props. The logic decides if the can buy a house.
-				if(p1HouseCount == prop.getNumOfHouses() || p2HouseCount == prop.getNumOfHouses())
-				{
+			} else {
+				// if the have three props. The logic decides if the can buy a house.
+				if (p1HouseCount == prop.getNumOfHouses() || p2HouseCount == prop.getNumOfHouses()) {
 					return true;
 				}
 			}
-			//they can't buy the house
+			// they can't buy the house
 			return false;
 		}
 
@@ -288,34 +261,24 @@ public class GameManager {
 	}
 
 	// added the method to return all the props with the same color.
-	public static ArrayList<NormalProp> getPropsByColor(Player player, String color)
-	{
+	public static ArrayList<NormalProp> getPropsByColor(Player player, String color) {
 		ArrayList<NormalProp> properties = new ArrayList<>();
-		for(Property props : player.getProperties().values())
-		{
-			try
-			{
-				if(((NormalProp) props).getColor() == color)
-				{
+		for (Property props : player.getProperties().values()) {
+			try {
+				if (((NormalProp) props).getColor() == color) {
 					properties.add((NormalProp) props);
 				}
-			}
-			catch(ClassCastException e)
-			{
+			} catch (ClassCastException e) {
 
 			}
 		}
 		return properties;
 	}
 
-	public static void chargeRent(Player player, Property prop)
-	{
-		for(int i = 0; i < game.getPlayers().length; i++)
-		{
-			if(game.getPlayers()[i].getProperties().containsValue(prop))
-			{
-				if(!game.getPlayers()[i].getProperties().get(prop.getName()).isMortgaged())
-				{
+	public static void chargeRent(Player player, Property prop) {
+		for (int i = 0; i < game.getPlayers().length; i++) {
+			if (game.getPlayers()[i].getProperties().containsValue(prop)) {
+				if (!game.getPlayers()[i].getProperties().get(prop.getName()).isMortgaged()) {
 					game.getPlayers()[i].setAmountOfCash(game.getPlayers()[i].getAmountOfCash() + prop.getRent());
 					player.setAmountOfCash(player.getAmountOfCash() - prop.getRent());
 				}
