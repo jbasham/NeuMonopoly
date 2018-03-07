@@ -50,7 +50,7 @@ public class Board implements Serializable
 			// 19
 			new NormalProp("City Station", 0, 2, "orange", 180, 14, 90, 100),
 			// 20
-			new NormalProp("Essex", 0, 1, "orange", 200, 16, 100, 100),
+			new NormalProp("Elevate on 5th", 0, 1, "orange", 200, 16, 100, 100),
 			// 21
 			new SpecialSpace("Free Parking", 0, 0),
 			// 22
