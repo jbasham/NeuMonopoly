@@ -365,4 +365,20 @@ public class GameManager {
 			//NICK HELP!!
 		}
 	}
+
+	public static void playerMortgage(Player player, Property prop)
+	{
+		if(prop instanceof NormalProp)
+		{
+			ArrayList<NormalProp> ownedProps = getPropsByColor(player, prop.getName());
+			for(NormalProp property : ownedProps)
+			{
+				player.setAmountOfCash(
+						player.getAmountOfCash() + ((property.getHousePrice() * property.getNumOfHouses()) / 2));
+				property.setNumOfHouses(0);
+			}
+		}
+		prop.setMortgaged(true);
+		player.setAmountOfCash(player.getAmountOfCash() + prop.getMortgageValue());
+	}
 }
