@@ -257,12 +257,11 @@ public class GameManager {
 	public static void drawCard(Player player, SpecialSpace sp) {
 		// stores The card as a special card and adds it to the players card list
 		SpecialCard card = Game.drawCard(sp);
-		useCards(player, card);
+		useCard(player, card);
 	}
 
 	public static void buyHouse(Player player, NormalProp prop) {
 		boolean ownsAllColors = false;
-		int numberOfProps = 0;
 		String propColor = prop.getColor();
 		ArrayList<NormalProp> ownedProps = getPropsByColor(player, propColor);
 
