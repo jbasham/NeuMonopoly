@@ -118,10 +118,62 @@ public class GameManager
 		}
 	}
 
-	public static void giveCards(Player player, SpecialCard card)
+	public static void useCard(Player player, SpecialCard card)
 	{
-		// adds the card to the players collection.
-		player.setSpecialCards(card);
+		if(card.getName().equals("Get out of jail free")) {
+			// adds the card to the players collection.
+			player.setSpecialCards(card);
+		} else if (card.getName().equals("Go back 3 spaces")) {
+			//sends the player back three spaces from where they are
+			//NICK HELP!!
+		} else if (card.getName().equals("Advance to Start")) {
+			//sets the player's coordinates to the (10,10) (Start coordinates)
+			player.setCoordinates(new int[] {10,10});
+		} else if (card.getName().equals("Go to Jail")) {
+			//sends a player to the jail space and sets the inJail boolean to 'true'
+			player.setCoordinates(new int[] {0,10});
+			player.setInJail(true);
+		} else if (card.getName().equals("Pay everyone $50")) {
+			Player[] players = game.getPlayers();
+			int otherPlayers = 0;
+			
+			//adds $50 to every player besides the one that that drew the card
+			for (Player p : players) {
+				if (!p.getName().equals(player.getName())) {
+					p.setAmountOfCash(p.getAmountOfCash()+50);
+					otherPlayers++;
+				}
+			}
+			
+			//subtracts $50 for every other player there is from the player that drew the card
+			player.setAmountOfCash(player.getAmountOfCash()-(50*otherPlayers));
+		} else if (card.getName().equals("Income tax return")) {
+			//adds $50 to the player that drew the card
+			player.setAmountOfCash(player.getAmountOfCash()+50);
+		} else if (card.getName().equals("It's your birthday!")) {
+			Player[] players = game.getPlayers();
+			int otherPlayers = 0;
+			
+			//subtracts $20 from every player besides the one that that drew the card
+			for (Player p : players) {
+				if (!p.getName().equals(player.getName())) {
+					p.setAmountOfCash(p.getAmountOfCash()-20);
+					otherPlayers++;
+				}
+			}
+			
+			//gives $20 for every other player there is to the player that drew the card
+			player.setAmountOfCash(player.getAmountOfCash()+(20*otherPlayers));
+		} else if (card.getName().equals("Parent care-package")) {
+			//gives $100 to the player that drew the card
+			player.setAmountOfCash(player.getAmountOfCash()+100);
+		} else if (card.getName().equals("Doctor's fees")) {
+			//subtracts $30 from the player that drew the card
+			player.setAmountOfCash(player.getAmountOfCash()-30);
+		} else if (card.getName().equals("Won second place at a Smash tournament")) {
+			//gives $25 to the player that drew the card
+			player.setAmountOfCash(player.getAmountOfCash()+25);
+		} 
 	}
 
 	public static int addFreeParkingMoney(int money)
