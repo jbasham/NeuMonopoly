@@ -308,9 +308,7 @@ public class GameManager
 				player.getSpecialCards().remove(0);
 				player.setInJail(false);
 			}
-		}
-		else
-		{
+		}else{
 
 			if(payBail)
 			{

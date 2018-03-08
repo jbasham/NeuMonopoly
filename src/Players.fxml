@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="746.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="746.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFxControls.playersController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -19,8 +19,8 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="300.0" text="2 Players" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="300.0" text="3 Players" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="300.0" text="4 Players" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button fx:id="twoPlayerButton" mnemonicParsing="false" onAction="#handleTwoPlayerButton" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: gold;" text="2 Players" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button fx:id="threePlayerButton" mnemonicParsing="false" onAction="#handleThreePlayerButton" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: gold;" text="3 Players" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button fx:id="fourPlayerButton" mnemonicParsing="false" onAction="#handlefourPlayerButton" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: gold;" text="4 Players" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    </children>
 </GridPane>
