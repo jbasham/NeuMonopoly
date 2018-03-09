@@ -3,6 +3,11 @@ package models;
 public class Railroad extends Property
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Railroad(String name, int xCoordinate, int yCoordinate, int costToPurchase, int mortgage)
 	{
 		super(name, xCoordinate, yCoordinate);
