@@ -210,8 +210,15 @@ public class GameManager
 		}
 		else if(card.getName().equals("Go back 3 spaces"))
 		{
-			// sends the player back three spaces from where they are
-			// NICK HELP!!
+			//sets the coordinates of the player to three spaces behind where they are now
+			for(int i = 0; i<game.board.spaces.length; i++) {
+				
+				if(player.getCoordinates() == game.board.spaces[i].getCoordinates()) {
+					player.setCoordinates(game.board.spaces[i-3].getCoordinates());
+					break;
+				}
+					
+			}
 		}
 		else if(card.getName().equals("Advance to Start"))
 		{
