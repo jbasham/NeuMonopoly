@@ -51,7 +51,7 @@ public class boardController {
 	void handleEndButton(ActionEvent event) {
 		playerPlaying++;
 		if (playerPlaying > 4) {
-			playerPlaying = 1;
+			playerPlaying = 0;
 		}
 		rollButton.setDisable(false);
 		changeText();
@@ -69,7 +69,11 @@ public class boardController {
 		if (rolledNums[0] != rolledNums[1]) {
 			rollButton.setDisable(true);
 		}
-
+		for(int i = 0; i < GameManager.game.board.spaces.length; i++) {
+			if(GameManager.game.board.spaces[i].getCoordinates() == players[playerPlaying].getCoordinates())
+				players[playerPlaying].setCoordinates(GameManager.game.board.spaces[i+(rolledNums[0]+rolledNums[1])].getCoordinates());
+		}
+		
 	}
 
 	private static boolean playerOneTurn = true;

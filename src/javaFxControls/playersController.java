@@ -3,6 +3,7 @@ package javaFxControls;
 import java.io.IOException;
 import java.util.Random;
 
+import application.GameManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,16 +30,19 @@ public class playersController {
 
     @FXML
     void handlefourPlayerButton(ActionEvent event) {
+    	GameManager.newGame(4);
     	switchPageL();
     }
 
     @FXML
     void handleThreePlayerButton(ActionEvent event) {
+    	GameManager.newGame(3);
     	switchPageL();
     }
 
     @FXML
     void handleTwoPlayerButton(ActionEvent event) {
+    	GameManager.newGame(2);
     	switchPageL();
     }
     @FXML

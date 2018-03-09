@@ -9,7 +9,7 @@ public class Game implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	public Board board = new Board();
-	Player[] players;
+	static Player[] players;
 	static SpecialCard[] specialCards = new SpecialCard[10];
 
 	public Game(int numberOfPlayers) {
