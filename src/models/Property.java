@@ -3,6 +3,10 @@ package models;
 public abstract class Property extends Space
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int costToPurchase;
 	private int costOfRent;
 	private int mortgageValue;

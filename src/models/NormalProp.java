@@ -2,6 +2,10 @@ package models;
 
 public class NormalProp extends Property
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String color;
 	private int numOfHouses;
 	private int housePrice;
