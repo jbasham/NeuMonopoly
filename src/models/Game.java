@@ -16,7 +16,7 @@ public class Game implements Serializable {
 		players = new Player[numberOfPlayers];
 	}
 
-	public Player[] getPlayers() {
+	public static Player[] getPlayers() {
 		return players;
 	}
 
