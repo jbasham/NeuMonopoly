@@ -9,9 +9,10 @@ public class Board implements Serializable
 	 */
 	
 	private static final long serialVersionUID = 1L;
+	public Space[] spaces;
 	public Board() {
-	}
-	public Space[] spaces = {
+		
+			Space[] newSpaces = {
 
 			// formats the board (hard-coded values and positions)
 			// 0
@@ -94,5 +95,8 @@ public class Board implements Serializable
 			new SpecialSpace("Tuition Fees", 10, 8),
 			// 40
 			new NormalProp("C++", 10, 9, "blue", 400, 50, 200, 200)};
-
+			
+			spaces = newSpaces;
+	}
+	
 }

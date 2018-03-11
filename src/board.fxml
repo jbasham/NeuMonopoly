@@ -282,22 +282,22 @@
          </image>
       </ImageView>
       <Button fx:id="rollButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleRollButton" prefHeight="30.0" prefWidth="77.0" text="Roll" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="12" />
-      <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
+      <ImageView fx:id="PieceFour" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="9">
          <image>
             <Image url="@The_only_reason_I_cling_to_life_is_that_I_fear_what_waits_for_me_on_the_other_side/Player%20Pieces/Player4Piece.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
+      <ImageView fx:id="PieceThree" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
          <image>
             <Image url="@The_only_reason_I_cling_to_life_is_that_I_fear_what_waits_for_me_on_the_other_side/Player%20Pieces/Player3Piece.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
+      <ImageView fx:id="PieceTwo" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
          <image>
             <Image url="@The_only_reason_I_cling_to_life_is_that_I_fear_what_waits_for_me_on_the_other_side/Player%20Pieces/Player2Piece.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
+      <ImageView fx:id="PieceOne" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
          <image>
             <Image url="@The_only_reason_I_cling_to_life_is_that_I_fear_what_waits_for_me_on_the_other_side/Player%20Pieces/Player1Piece.png" />
          </image>

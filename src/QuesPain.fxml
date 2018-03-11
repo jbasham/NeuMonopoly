@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="quesPain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PropertyController">
+   <children>
+      <TextField fx:id="TextQues" layoutX="-1.0" prefHeight="153.0" prefWidth="600.0" style="-fx-background-color: gold;" text="Would you like to buy this property?">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </TextField>
+      <Button fx:id="yesButton" layoutX="125.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleYesButton" prefHeight="47.0" prefWidth="112.0" style="-fx-background-color: gold;" text="Yes" />
+      <Button fx:id="noButton" layoutX="337.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleNoButton" prefHeight="47.0" prefWidth="112.0" style="-fx-background-color: gold;" text="No" />
+   </children>
+</Pane>

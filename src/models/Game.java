@@ -9,20 +9,23 @@ public class Game implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	public Board board = new Board();
-	static Player[] players;
-	static SpecialCard[] specialCards = new SpecialCard[10];
+	 Player[] players;
+	 SpecialCard[] specialCards = new SpecialCard[10];
 
 	public Game(int numberOfPlayers) {
 		players = new Player[numberOfPlayers];
+		for(int i = 0; i<players.length; i++) {
+			players[i] = new Player("Player "+(i+1));
+		}
 	}
 	
 	public Game() {};
 
-	public static Player[] getPlayers() {
+	public Player[] getPlayers() {
 		return players;
 	}
 
-	public static SpecialCard drawCard(SpecialSpace sp)
+	public SpecialCard drawCard(SpecialSpace sp)
 	{
 		if(sp.getName().equals("Chance"))
 		{
