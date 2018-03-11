@@ -60,7 +60,7 @@ public class FirstController {
 			controlsIN.setStage(primaryStage);
             Scene scene = new Scene(root, 1200, 1200);
             primaryStage.setScene(scene);
-            primaryStage.setAlwaysOnTop(true);
+            primaryStage.setAlwaysOnTop(false);
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {

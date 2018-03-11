@@ -282,7 +282,7 @@
          </image>
       </ImageView>
       <Button fx:id="rollButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleRollButton" prefHeight="30.0" prefWidth="77.0" text="Roll" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="12" />
-      <ImageView fx:id="PieceFour" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="9">
+      <ImageView fx:id="PieceFour" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
          <image>
             <Image url="@The_only_reason_I_cling_to_life_is_that_I_fear_what_waits_for_me_on_the_other_side/Player%20Pieces/Player4Piece.png" />
          </image>
@@ -308,5 +308,8 @@
          </image>
       </ImageView>
       <Button fx:id="endButton" mnemonicParsing="false" onAction="#handleEndButton" prefHeight="73.0" prefWidth="230.0" text="End Turn" GridPane.columnIndex="11" GridPane.rowIndex="12" />
+      <Button fx:id="buyNoButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleBuyNoButton" prefHeight="30.0" prefWidth="77.0" text="Roll" textAlignment="CENTER" visible="false" GridPane.columnIndex="8" GridPane.rowIndex="12" />
+      <Button fx:id="buyYesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleBuyYesButton" prefHeight="30.0" prefWidth="77.0" text="Yes" textAlignment="CENTER" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="12" />
+      <TextField fx:id="buyText" editable="false" onAction="#handleBuyText" text="Buy prop?" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="12" />
    </children>
 </GridPane>

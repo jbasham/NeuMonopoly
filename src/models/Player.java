@@ -21,8 +21,9 @@ public class Player implements Serializable {
 	int[] coordinates = { 10, 10 };
 	int index = 0;
 
-	public Player(String name) {
+	public Player(String name, int startMoney) {
 		setName(name);
+		setAmountOfCash(startMoney);
 	}
 
 	public HashMap<String, Property> getProperties() {
