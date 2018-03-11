@@ -107,7 +107,7 @@ public class boardController
 		buyYesButton.setVisible(false);
 		buyNoButton.setVisible(false);
 		buyText.setVisible(false);
-		onePlayerProp.set(players[playerPlaying].getProperties().keySet());
+//		onePlayerProp.set(players[playerPlaying].getProperties().keySet());
 	}
 
 	@FXML
@@ -143,10 +143,10 @@ public class boardController
 	@FXML
 	void handleRollButton(ActionEvent event)
 	{
-		handlePlayerOneMoney();
-		handlePlayerTwoMoney();
-		handlePlayerThreeMoney();
-		handlePlayerFourMoney();
+//		handlePlayerOneMoney();
+//		handlePlayerTwoMoney();
+//		handlePlayerThreeMoney();
+//		handlePlayerFourMoney();
 		String[] urls = {"Dice\\Dice\\Dice1.png", "Dice\\Dice\\Dice2.png", "Dice\\Dice\\Dice3.png",
 				"Dice\\Dice\\Dice4.png", "Dice\\Dice\\Dice5.png", "Dice\\Dice\\Dice6.png"};
 		int[] rolledNums = GameManager.rollDice();
@@ -211,10 +211,12 @@ public class boardController
 		buyYesButton.setVisible(true);
 		buyNoButton.setVisible(true);
 		buyText.setVisible(true);
-		handlePlayerOneMoney();
-		handlePlayerTwoMoney();
-		handlePlayerThreeMoney();
-		handlePlayerFourMoney();
+		
+//		handlePlayerOneMoney();
+//		handlePlayerTwoMoney();
+//		handlePlayerThreeMoney();
+//		handlePlayerFourMoney();
+		
 		// Popup pop = new Popup();
 		//
 		// FXMLLoader load = new
@@ -283,13 +285,13 @@ public class boardController
 
 	public void changeText()
 	{
-		if(GameManager.game.getPlayers() != null)
-		{
-			handlePlayerOneMoney();
-			handlePlayerTwoMoney();
-			handlePlayerThreeMoney();
-			handlePlayerFourMoney();
-		}
+//		if(GameManager.game.getPlayers() != null)
+//		{
+//			handlePlayerOneMoney();
+//			handlePlayerTwoMoney();
+//			handlePlayerThreeMoney();
+//			handlePlayerFourMoney();
+//		}
 		if(playerPlaying == 0)
 		{
 			whatPlayer.setText("It is Player 1's turn.");
