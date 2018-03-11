@@ -168,31 +168,42 @@ public class GameManager
 		{
 
 		}
-		if (player.getAmountOfCash() < 0) {
+		if(player.getAmountOfCash() < 0)
+		{
 			emergencyRefunding(player);
 		}
 	}
-	
-	public static void emergencyRefunding(Player player) {
+
+	public static void emergencyRefunding(Player player)
+	{
 		int propsWithHouses = player.getNormalProps().size();
 		boolean outOfFunds = true;
-		while (outOfFunds) {
-			for (NormalProp prop : player.getNormalProps().values()) {
-				if (prop.getNumOfHouses() > 0) {
-					player.setAmountOfCash(player.getAmountOfCash() + (prop.getHousePrice()/2));
-				} else {
+		while(outOfFunds)
+		{
+			for(NormalProp prop : player.getNormalProps().values())
+			{
+				if(prop.getNumOfHouses() > 0)
+				{
+					player.setAmountOfCash(player.getAmountOfCash() + (prop.getHousePrice() / 2));
+				}
+				else
+				{
 					propsWithHouses--;
 				}
-				if (player.getAmountOfCash() >= 0) {
+				if(player.getAmountOfCash() >= 0)
+				{
 					outOfFunds = false;
 					break;
 				}
 			}
-			if (propsWithHouses == 0) {
-				for (NormalProp prop : player.getNormalProps().values()) {
+			if(propsWithHouses == 0)
+			{
+				for(NormalProp prop : player.getNormalProps().values())
+				{
 					player.setAmountOfCash(player.getAmountOfCash() + prop.getMortgageValue());
 					prop.setMortgaged(true);
-					if (player.getAmountOfCash() >= 0) {
+					if(player.getAmountOfCash() >= 0)
+					{
 						outOfFunds = false;
 						break;
 					}
@@ -315,7 +326,9 @@ public class GameManager
 				player.getSpecialCards().remove(0);
 				player.setInJail(false);
 			}
-		} else {
+		}
+		else
+		{
 
 			if(payBail)
 			{
