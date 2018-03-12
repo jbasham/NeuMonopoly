@@ -3,6 +3,7 @@ package javaFxControls;
 import java.io.IOException;
 
 import application.GameManager;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,11 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import models.Game;
+import models.NormalProp;
 import models.Player;
+import models.Railroad;
+import models.SpecialSpace;
+import models.Utility;
 
 public class boardController
 {
@@ -40,16 +45,16 @@ public class boardController
 	private GridPane boardPane;
 
 	@FXML
-	private ChoiceBox<?> onePlayerProp;
+	private ChoiceBox<String> onePlayerProp;
 
 	@FXML
-	private ChoiceBox<?> twoPlayerProp;
+	private ChoiceBox<String> twoPlayerProp;
 
 	@FXML
-	private ChoiceBox<?> threePlayerProp;
+	private ChoiceBox<String> threePlayerProp;
 
 	@FXML
-	private ChoiceBox<?> playerFourProp;
+	private ChoiceBox<String> playerFourProp;
 
 	@FXML
 	private TextField whatPlayer;
@@ -108,6 +113,21 @@ public class boardController
 		buyNoButton.setVisible(false);
 		buyText.setVisible(false);
 //		onePlayerProp.set(players[playerPlaying].getProperties().keySet());
+		
+		switch(playerPlaying) {
+		case 0:	
+			onePlayerProp.getItems().add(GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
+			break;
+		case 1:
+			twoPlayerProp.getItems().add(GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
+			break;
+		case 2:
+			threePlayerProp.getItems().add(GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
+			break;
+		case 3:
+			playerFourProp.getItems().add(GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
+			break;
+		}
 	}
 
 	@FXML
@@ -143,10 +163,12 @@ public class boardController
 	@FXML
 	void handleRollButton(ActionEvent event)
 	{
+		//boolean isOwned = false;
 //		handlePlayerOneMoney();
 //		handlePlayerTwoMoney();
 //		handlePlayerThreeMoney();
 //		handlePlayerFourMoney();
+		
 		String[] urls = {"Dice\\Dice\\Dice1.png", "Dice\\Dice\\Dice2.png", "Dice\\Dice\\Dice3.png",
 				"Dice\\Dice\\Dice4.png", "Dice\\Dice\\Dice5.png", "Dice\\Dice\\Dice6.png"};
 		int[] rolledNums = GameManager.rollDice();
@@ -178,6 +200,7 @@ public class boardController
 		case 0:
 			stack1.getChildren().clear();
 			stack1.getChildren().add(PieceOne);
+			boardPane.getChildren().remove(stack1);
 			boardPane.add(stack1, newCoordinates[0], newCoordinates[1]);
 			GameManager.buyProperty(players[playerPlaying],
 					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
@@ -185,6 +208,7 @@ public class boardController
 		case 1:
 			stack2.getChildren().clear();
 			stack2.getChildren().add(PieceTwo);
+			boardPane.getChildren().remove(stack2);
 
 			boardPane.add(stack2, newCoordinates[0], newCoordinates[1]);
 			GameManager.buyProperty(players[playerPlaying],
@@ -193,6 +217,7 @@ public class boardController
 		case 2:
 			stack3.getChildren().clear();
 			stack3.getChildren().add(PieceThree);
+			boardPane.getChildren().remove(stack3);
 			boardPane.add(stack3, newCoordinates[0], newCoordinates[1]);
 			GameManager.buyProperty(players[playerPlaying],
 					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
@@ -200,17 +225,26 @@ public class boardController
 		case 3:
 			stack4.getChildren().clear();
 			stack4.getChildren().add(PieceFour);
+			boardPane.getChildren().remove(stack4);
 			boardPane.add(stack4, newCoordinates[0], newCoordinates[1]);
 			GameManager.buyProperty(players[playerPlaying],
 					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
 			break;
 		}
+		
+//		for(int i = 0; i<GameManager.game.getPlayers().length; i++) {
+//			if(players[i].getProperties().containsValue(GameManager.game.board.spaces[players[playerPlaying].getIndex()])) {
+//				isOwned = true;
+//			}
+//		}
 
-		GameManager.buyProperty(players[playerPlaying],
-				GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+		if(!(GameManager.game.board.spaces[players[playerPlaying].getIndex()] instanceof SpecialSpace)) {
 		buyYesButton.setVisible(true);
 		buyNoButton.setVisible(true);
 		buyText.setVisible(true);
+		GameManager.buyProperty(players[playerPlaying],
+				GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+		}
 		
 //		handlePlayerOneMoney();
 //		handlePlayerTwoMoney();
