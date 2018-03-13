@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import models.Game;
 import models.NormalProp;
 import models.Player;
+import models.Property;
 import models.Railroad;
 import models.SpecialSpace;
 import models.Utility;
@@ -80,15 +81,18 @@ public class boardController
 	@FXML
 	private TextField buyText;
 
-	//could figure out how to make it readable
-//	@FXML
-//	private TextField playerOneMoney;
-//	@FXML
-//	private TextField playerTwoMoney;
-//	@FXML
-//	private TextField playerThreeMoney;
-//	@FXML
-//	private TextField playerFourMoney;
+	@FXML
+	private TextField infoBox;
+
+	// could figure out how to make it readable
+	// @FXML
+	// private TextField playerOneMoney;
+	// @FXML
+	// private TextField playerTwoMoney;
+	// @FXML
+	// private TextField playerThreeMoney;
+	// @FXML
+	// private TextField playerFourMoney;
 
 	@FXML
 	public StackPane stack1 = new StackPane();
@@ -112,10 +116,12 @@ public class boardController
 		buyYesButton.setVisible(false);
 		buyNoButton.setVisible(false);
 		buyText.setVisible(false);
-//		onePlayerProp.set(players[playerPlaying].getProperties().keySet());
-		
-		switch(playerPlaying) {
-		case 0:	
+		infoBoxText("You bought " + GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
+		// onePlayerProp.set(players[playerPlaying].getProperties().keySet());
+
+		switch(playerPlaying)
+		{
+		case 0:
 			onePlayerProp.getItems().add(GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
 			break;
 		case 1:
@@ -151,6 +157,7 @@ public class boardController
 	@FXML
 	void handleEndButton(ActionEvent event)
 	{
+		Player[] players = GameManager.game.getPlayers();
 		playerPlaying++;
 		if(playerPlaying > GameManager.game.getPlayers().length - 1)
 		{
@@ -158,17 +165,19 @@ public class boardController
 		}
 		rollButton.setDisable(false);
 		changeText();
+		endButton.setDisable(true);
+		infoBoxText(players[playerPlaying].getName() + " ended their turn.");
 	}
 
 	@FXML
 	void handleRollButton(ActionEvent event)
 	{
-		//boolean isOwned = false;
-//		handlePlayerOneMoney();
-//		handlePlayerTwoMoney();
-//		handlePlayerThreeMoney();
-//		handlePlayerFourMoney();
-		
+		// boolean isOwned = false;
+		// handlePlayerOneMoney();
+		// handlePlayerTwoMoney();
+		// handlePlayerThreeMoney();
+		// handlePlayerFourMoney();
+
 		String[] urls = {"Dice\\Dice\\Dice1.png", "Dice\\Dice\\Dice2.png", "Dice\\Dice\\Dice3.png",
 				"Dice\\Dice\\Dice4.png", "Dice\\Dice\\Dice5.png", "Dice\\Dice\\Dice6.png"};
 		int[] rolledNums = GameManager.rollDice();
@@ -179,6 +188,7 @@ public class boardController
 		if(rolledNums[0] != rolledNums[1])
 		{
 			rollButton.setDisable(true);
+			endButton.setDisable(false);
 		}
 		// for(int i = 0; i < GameManager.game.board.spaces.length; i++) {
 		// if(GameManager.game.board.spaces[i].getCoordinates().equals(players[playerPlaying].getCoordinates()))
@@ -194,63 +204,23 @@ public class boardController
 			players[playerPlaying].setIndex(players[playerPlaying].getIndex() + rolledNums[0] + rolledNums[1]);
 		}
 		// System.out.println(newCoordinates[0] + " " + newCoordinates[1]);
-		int[] newCoordinates = GameManager.game.board.spaces[players[playerPlaying].getIndex()].getCoordinates();
-		switch(playerPlaying)
-		{
-		case 0:
-			stack1.getChildren().clear();
-			stack1.getChildren().add(PieceOne);
-			boardPane.getChildren().remove(stack1);
-			boardPane.add(stack1, newCoordinates[0], newCoordinates[1]);
-			GameManager.buyProperty(players[playerPlaying],
-					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
-			break;
-		case 1:
-			stack2.getChildren().clear();
-			stack2.getChildren().add(PieceTwo);
-			boardPane.getChildren().remove(stack2);
 
-			boardPane.add(stack2, newCoordinates[0], newCoordinates[1]);
-			GameManager.buyProperty(players[playerPlaying],
-					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
-			break;
-		case 2:
-			stack3.getChildren().clear();
-			stack3.getChildren().add(PieceThree);
-			boardPane.getChildren().remove(stack3);
-			boardPane.add(stack3, newCoordinates[0], newCoordinates[1]);
-			GameManager.buyProperty(players[playerPlaying],
-					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
-			break;
-		case 3:
-			stack4.getChildren().clear();
-			stack4.getChildren().add(PieceFour);
-			boardPane.getChildren().remove(stack4);
-			boardPane.add(stack4, newCoordinates[0], newCoordinates[1]);
-			GameManager.buyProperty(players[playerPlaying],
-					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
-			break;
-		}
-		
-//		for(int i = 0; i<GameManager.game.getPlayers().length; i++) {
-//			if(players[i].getProperties().containsValue(GameManager.game.board.spaces[players[playerPlaying].getIndex()])) {
-//				isOwned = true;
-//			}
-//		}
+		movePlayer(players);
 
-		if(!(GameManager.game.board.spaces[players[playerPlaying].getIndex()] instanceof SpecialSpace)) {
-		buyYesButton.setVisible(true);
-		buyNoButton.setVisible(true);
-		buyText.setVisible(true);
-		GameManager.buyProperty(players[playerPlaying],
-				GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
-		}
-		
-//		handlePlayerOneMoney();
-//		handlePlayerTwoMoney();
-//		handlePlayerThreeMoney();
-//		handlePlayerFourMoney();
-		
+		// for(int i = 0; i<GameManager.game.getPlayers().length; i++) {
+		// if(players[i].getProperties().containsValue(GameManager.game.board.spaces[players[playerPlaying].getIndex()]))
+		// {
+		// isOwned = true;
+		// }
+		// }
+
+		askToBuy(players);
+
+		// handlePlayerOneMoney();
+		// handlePlayerTwoMoney();
+		// handlePlayerThreeMoney();
+		// handlePlayerFourMoney();
+
 		// Popup pop = new Popup();
 		//
 		// FXMLLoader load = new
@@ -267,42 +237,108 @@ public class boardController
 
 	private static boolean playerOneTurn = true;
 
+	public void askToBuy(Player[] players)
+	{
+		try
+		{
+			if(!(GameManager.game.board.spaces[players[playerPlaying].getIndex()] instanceof SpecialSpace)
+					&& !(((Property) GameManager.game.board.spaces[players[playerPlaying].getIndex()]).isOwned()))
+			{
+				buyYesButton.setVisible(true);
+				buyNoButton.setVisible(true);
+				buyText.setVisible(true);
+				GameManager.buyProperty(players[playerPlaying],
+						GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+			}
+		}
+		catch(ClassCastException e)
+		{
+		}
+	}
+
+	public void movePlayer(Player[] players)
+	{
+
+		int[] newCoordinates = GameManager.game.board.spaces[players[playerPlaying].getIndex()].getCoordinates();
+		switch(playerPlaying)
+		{
+		case 0:
+			stack1.getChildren().clear();
+			stack1.getChildren().add(PieceOne);
+			boardPane.getChildren().remove(stack1);
+			boardPane.add(stack1, newCoordinates[0], newCoordinates[1]);
+			GameManager.willBuy = false;
+			GameManager.buyProperty(players[playerPlaying],
+					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+			break;
+		case 1:
+			stack2.getChildren().clear();
+			stack2.getChildren().add(PieceTwo);
+			boardPane.getChildren().remove(stack2);
+
+			boardPane.add(stack2, newCoordinates[0], newCoordinates[1]);
+			GameManager.willBuy = false;
+			GameManager.buyProperty(players[playerPlaying],
+					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+			break;
+		case 2:
+			stack3.getChildren().clear();
+			stack3.getChildren().add(PieceThree);
+			boardPane.getChildren().remove(stack3);
+			boardPane.add(stack3, newCoordinates[0], newCoordinates[1]);
+			GameManager.willBuy = false;
+			GameManager.buyProperty(players[playerPlaying],
+					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+			break;
+		case 3:
+			stack4.getChildren().clear();
+			stack4.getChildren().add(PieceFour);
+			boardPane.getChildren().remove(stack4);
+			boardPane.add(stack4, newCoordinates[0], newCoordinates[1]);
+			GameManager.willBuy = false;
+			GameManager.buyProperty(players[playerPlaying],
+					GameManager.game.board.spaces[players[playerPlaying].getIndex()]);
+			break;
+		}
+		infoBoxText("You landed on " + GameManager.game.board.spaces[players[playerPlaying].getIndex()].getName());
+	}
+
 	public static void setPlayerOneTurn(boolean playerOneTurn)
 	{
 		boardController.playerOneTurn = playerOneTurn;
 	}
 
-	//updates the money
-//	public void handlePlayerOneMoney()
-//	{
-//		Player[] players = GameManager.game.getPlayers();
-//		playerOneMoney.setText("Player1: " + players[0].getAmountOfCash());
-//		
-//	}
-//
-//	public void handlePlayerTwoMoney()
-//	{
-//		Player[] players = GameManager.game.getPlayers();
-//		playerTwoMoney.setText("Player2: /n" + players[1].getAmountOfCash());
-//	}
-//
-//	public void handlePlayerThreeMoney()
-//	{
-//		Player[] players = GameManager.game.getPlayers();
-//		if(players.length != 2)
-//		{
-//			playerThreeMoney.setText("Player3: /n" + players[2].getAmountOfCash());
-//		}
-//	}
-//
-//	public void handlePlayerFourMoney()
-//	{
-//		Player[] players = GameManager.game.getPlayers();
-//		if(players.length == 4)
-//		{
-//			playerFourMoney.setText("Player4: /n" + players[3].getAmountOfCash());
-//		}
-//	}
+	// updates the money
+	// public void handlePlayerOneMoney()
+	// {
+	// Player[] players = GameManager.game.getPlayers();
+	// playerOneMoney.setText("Player1: " + players[0].getAmountOfCash());
+	//
+	// }
+	//
+	// public void handlePlayerTwoMoney()
+	// {
+	// Player[] players = GameManager.game.getPlayers();
+	// playerTwoMoney.setText("Player2: /n" + players[1].getAmountOfCash());
+	// }
+	//
+	// public void handlePlayerThreeMoney()
+	// {
+	// Player[] players = GameManager.game.getPlayers();
+	// if(players.length != 2)
+	// {
+	// playerThreeMoney.setText("Player3: /n" + players[2].getAmountOfCash());
+	// }
+	// }
+	//
+	// public void handlePlayerFourMoney()
+	// {
+	// Player[] players = GameManager.game.getPlayers();
+	// if(players.length == 4)
+	// {
+	// playerFourMoney.setText("Player4: /n" + players[3].getAmountOfCash());
+	// }
+	// }
 
 	public void initialize()
 	{
@@ -317,15 +353,20 @@ public class boardController
 
 	}
 
+	public void infoBoxText(String text)
+	{
+		infoBox.setText(text);
+	}
+
 	public void changeText()
 	{
-//		if(GameManager.game.getPlayers() != null)
-//		{
-//			handlePlayerOneMoney();
-//			handlePlayerTwoMoney();
-//			handlePlayerThreeMoney();
-//			handlePlayerFourMoney();
-//		}
+		// if(GameManager.game.getPlayers() != null)
+		// {
+		// handlePlayerOneMoney();
+		// handlePlayerTwoMoney();
+		// handlePlayerThreeMoney();
+		// handlePlayerFourMoney();
+		// }
 		if(playerPlaying == 0)
 		{
 			whatPlayer.setText("It is Player 1's turn.");
@@ -358,4 +399,5 @@ public class boardController
 	{
 		return playerPlaying;
 	}
+
 }
