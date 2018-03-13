@@ -158,6 +158,7 @@ public class boardController
 	void handleEndButton(ActionEvent event)
 	{
 		Player[] players = GameManager.game.getPlayers();
+		infoBoxText(players[playerPlaying].getName() + " ended their turn.");
 		playerPlaying++;
 		if(playerPlaying > GameManager.game.getPlayers().length - 1)
 		{
@@ -166,7 +167,6 @@ public class boardController
 		rollButton.setDisable(false);
 		changeText();
 		endButton.setDisable(true);
-		infoBoxText(players[playerPlaying-1].getName() + " ended their turn.");
 	}
 
 	@FXML
@@ -367,21 +367,23 @@ public class boardController
 		// handlePlayerThreeMoney();
 		// handlePlayerFourMoney();
 		// }
+		
+		
 		if(playerPlaying == 0)
 		{
-			whatPlayer.setText("It is Player 1's turn.");
+			whatPlayer.setText("It is Player 1's turn. You have $" + GameManager.game.getPlayers()[playerPlaying].getAmountOfCash());
 		}
 		else if(playerPlaying == 1)
 		{
-			whatPlayer.setText("It is Player 2's turn.");
+			whatPlayer.setText("It is Player 2's turn. You have $" + GameManager.game.getPlayers()[playerPlaying].getAmountOfCash());
 		}
 		else if(playerPlaying == 2)
 		{
-			whatPlayer.setText("It is Player 3's turn.");
+			whatPlayer.setText("It is Player 3's turn. You have $" + GameManager.game.getPlayers()[playerPlaying].getAmountOfCash());
 		}
 		else if(playerPlaying == 3)
 		{
-			whatPlayer.setText("It is Player 4's turn.");
+			whatPlayer.setText("It is Player 4's turn. You have $" + GameManager.game.getPlayers()[playerPlaying].getAmountOfCash());
 		}
 		else
 		{
