@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * @author Joseph Basham
+ *
+ */
 public abstract class Property extends Space
 {
 
@@ -11,6 +15,7 @@ public abstract class Property extends Space
 	private int costOfRent;
 	private int mortgageValue;
 	private boolean isMortgaged;
+	private boolean isOwned = false;
 
 	public Property(String name, int xCoordinate, int yCoordinate)
 	{
@@ -55,6 +60,21 @@ public abstract class Property extends Space
 	public void setMortgaged(boolean isMortgaged)
 	{
 		this.isMortgaged = isMortgaged;
+	}
+
+	public boolean isOwned()
+	{
+		return isOwned;
+	}
+
+	public void setOwned(boolean isOwned)
+	{
+		this.isOwned = isOwned;
+	}
+
+	public static long getSerialversionuid()
+	{
+		return serialVersionUID;
 	}
 
 	public abstract int getRent();
