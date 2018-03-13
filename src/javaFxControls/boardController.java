@@ -166,7 +166,7 @@ public class boardController
 		rollButton.setDisable(false);
 		changeText();
 		endButton.setDisable(true);
-		infoBoxText(players[playerPlaying].getName() + " ended their turn.");
+		infoBoxText(players[playerPlaying-1].getName() + " ended their turn.");
 	}
 
 	@FXML
