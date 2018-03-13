@@ -108,7 +108,7 @@ public class GameManager
 	public static void buyProperty(Player player, Space space)
 	{
 		// this should be what is called when a player lands on a buyable property
-		if(space instanceof NormalProp)
+		if(!(space instanceof SpecialSpace))
 		{
 			try
 			{
@@ -128,7 +128,8 @@ public class GameManager
 							// asks the player if they want to buy the property
 							if(willBuy)
 							{
-								player.setAmountOfCash(player.getAmountOfCash() - thisProp.getCostToPurchase());
+								updateFunds(player, -thisProp.getCostToPurchase());
+								//player.setAmountOfCash(player.getAmountOfCash() - thisProp.getCostToPurchase());
 								giveProperties(player, thisProp);
 								thisProp.setOwned(true);
 							}
